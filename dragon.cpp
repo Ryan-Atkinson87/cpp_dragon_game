@@ -54,7 +54,8 @@ int main() {
             valid = false;
         }
     }
-    if (running == true) {
+    training = true;
+    while (running == true && training == true) {
         // introduction
         std::cout << "\n";
         std::cout << "I think you need to level up to save the prince.\n";
@@ -68,14 +69,12 @@ int main() {
         std::cout << "\n";
         
         // would you like to train question
-        std::cout << "Would you like to train or would you like to face the dragon?\n";
-        std::cout << "Response: ";
-        std::cin >> input_string;
-        
-
         valid = false;
         while (valid == false) {
             valid = true;
+            std::cout << "Would you like to train or would you like to face the dragon?\n";
+            std::cout << "Response: ";
+            std::cin >> input_string;
             if (input_string == "train" || input_string == "Train") {
                 
                 // runs through training cycle until user does not want to train again
@@ -137,11 +136,71 @@ int main() {
                 }
                 else if (input_string == "No" || input_string == "no") {
                     training = false;
+                    dragon_fight = true;
                 }
                 else {
                     std::cout << "You must enter yes or no!\n";
                     valid = false;
                 }
+            }
+        }
+        while (dragon_fight == true) {
+            std::cout << "\n";
+            std::cout << "-----------------------\n";
+            std::cout << "-----------------------\n";
+            std::cout << "    **  Warning  **    \n";
+            std::cout << "-----------------------\n";
+            std::cout << "-----------------------\n";
+            std::cout << "You are about to face the dragon\n";
+            std::cout << "Please make sure you are ready for this challenge!\n";
+            
+            //get a valid input
+            valid = false;
+            while (valid == false) {
+                valid = true;
+                std::cout << "Would you like to continue or go home?\n";
+                std::cout << "Continue or Home?: ";
+                std::cin >>  input_string;
+                if (input_string == "Continue" || input_string == "continue") {
+                    std::cout << "Your brave farmer, come on then!\n";
+                }
+                else if (input_string == "Home" || input_string == "home") {
+                    std::cout << "Very well, there is no shame in retreat, farewell " << users_name << "\n";
+                    dragon_fight = false;
+                    running = false;
+                }
+                else {
+                    std::cout << "Please enter Home or Dragon\n";
+                    valid = false;
+                }
+                }
+            // win conditions
+            if (sword >= 3 && bow >= 2 && endurance >= 1 && running == true) {
+                std::cout << "Congratulations!!!\n";
+                std::cout << "You defeated the dragon and saved the Prince!!!\n";
+                dragon_fight = false;
+                running = false;
+            }
+            else if (bow < 2 && running ==true) {
+                std::cout << "You need to work on your bow skills\n";
+                std::cout << "You weren't able to injur the dragon\n";
+                std::cout << "You died, the end, better luck next time :(\n";
+                dragon_fight = false;
+                running = false;
+            }
+            else if (sword < 3 && running == true) {
+                std::cout << "You need to work on your sword skills\n";
+                std::cout << "You weren't able to pierce the dragons scales\n";
+                std::cout << "You died, the end, better luck next time :(\n";
+                dragon_fight = false;
+                running = false;
+            }
+            else if (endurance < 1 && running == true) {
+                std::cout << "You need to work on your endurance\n";
+                std::cout << "You didn't survive for long enough\n";
+                std::cout << "You died, the end, better luck next time\n";
+                dragon_fight = false;
+                running = false;
             }
         }
 

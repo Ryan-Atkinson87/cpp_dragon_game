@@ -11,6 +11,7 @@ int main() {
     bool valid = false;
     bool running = true;
     bool training = false;
+    bool dragon_fight = false;
     int bow = 0;
     int sword = 0;
     int endurance = 0;
@@ -79,69 +80,68 @@ int main() {
                 
                 // runs through training cycle until user does not want to train again
                 training = true;
-                while (training == true) {
-                    
-                    
-                    // which skill gets increased loop
-                    valid = false;
-                    while (valid == false) {
-                        valid = true;
-                        std::cout << "\n";
-                        std::cout << "Where would you like to train?\n";
-                        std::cout << "Forrest, desert or sea?: ";
-                        std::cin >> input_string;
-                        if (input_string == "Forrest" || input_string == "forrest") {
-                            bow++;
-                            std::cout << "\n";
-                            std::cout << "Your bow skill increased!\n";
-                            std::cout << "Bow = " << bow;
-                        }
-                        else if (input_string == "Desert" || input_string == "desert") {
-                            endurance++;
-                            std::cout << "\n";
-                            std::cout << "Your endurance increased!\n";
-                            std::cout << "Endurance = " << endurance;
-                        }
-                        else if (input_string == "Sea" || input_string == "sea") {
-                            sword++;
-                            std::cout << "\n";
-                            std::cout << "Your sword skill increased!\n";
-                            std::cout << "Sword = " << sword;
-                        }
-                        else {
-                            std::cout << "\n";
-                            std::cout << "Please enter forrest, desert or sea!\n";
-                            valid = false;
-                        }
-                    }
-                    // would you like to train again loop
-                    valid = false;
-                    while (valid == false && training == true) {
-                        valid = true;
-                        std::cout << "\n";
-                        std::cout << "Would you like to train again?\n";
-                        std::cout << "Yes or no?: ";
-                        std::cin >> input_string;
-
-                        if (input_string == "Yes" || input_string == "yes") {
-                            training = true;
-                        }
-                        else if (input_string == "No" || input_string == "no") {
-                            training = false;
-                        }
-                        else {
-                            std::cout << "You must enter yes or no!\n";
-                            valid = false;
-                        }
-                    }
-                }
             }
             else if (input_string == "dragon" || input_string == "Dragon") {
-
+                dragon_fight = true;
             }
             else {
                 std::cout << "Please enter 'train' or 'dragon'\n";
                 valid = false;
+            }
+        }
+        while (training == true) {
+            
+            // which skill gets increased loop
+            valid = false;
+            while (valid == false) {
+                valid = true;
+                std::cout << "\n";
+                std::cout << "Where would you like to train?\n";
+                std::cout << "Forrest, desert or sea?: ";
+                std::cin >> input_string;
+                if (input_string == "Forrest" || input_string == "forrest") {
+                    bow++;
+                    std::cout << "\n";
+                    std::cout << "Your bow skill increased!\n";
+                    std::cout << "Bow = " << bow;
+                }
+                else if (input_string == "Desert" || input_string == "desert") {
+                    endurance++;
+                    std::cout << "\n";
+                    std::cout << "Your endurance increased!\n";
+                    std::cout << "Endurance = " << endurance;
+                }
+                else if (input_string == "Sea" || input_string == "sea") {
+                    sword++;
+                    std::cout << "\n";
+                    std::cout << "Your sword skill increased!\n";
+                    std::cout << "Sword = " << sword;
+                }
+                else {
+                    std::cout << "\n";
+                    std::cout << "Please enter forrest, desert or sea!\n";
+                    valid = false;
+                }
+            }
+            // would you like to train again loop
+            valid = false;
+            while (valid == false && training == true) {
+                valid = true;
+                std::cout << "\n";
+                std::cout << "Would you like to train again?\n";
+                std::cout << "Yes or no?: ";
+                std::cin >> input_string;
+
+                if (input_string == "Yes" || input_string == "yes") {
+                    training = true;
+                }
+                else if (input_string == "No" || input_string == "no") {
+                    training = false;
+                }
+                else {
+                    std::cout << "You must enter yes or no!\n";
+                    valid = false;
+                }
             }
         }
 
